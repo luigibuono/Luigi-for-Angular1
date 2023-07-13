@@ -18,7 +18,8 @@ Componenti list utenti e posts creati con metodo GET per visualizzarle + paginat
 Per concludere l'unico servizio utlizzato http-service con tutti i metodi creati , setHeaders per l'autorizzazione ad accedere al token dell'API, link su .env per prendere i dati dall'APi.
 Sezione Test disponibile con ng test per la verifica dei componenti e servizio.
 Clonare repository in local con GitDesktop,aprirlo su vscode,nel terminale npm install per pacchetti node modules e per finire ng serve per aprirla sul browser.
-
+<br> 
+<hr>
 "dependencies": {
     "@angular/animations": "^16.1.0",
     "@angular/cdk": "^16.1.4",
