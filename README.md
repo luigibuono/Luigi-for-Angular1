@@ -36,6 +36,9 @@ Clonare repository in local con GitDesktop,aprirlo su vscode,nel terminale npm i
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
+
+  <br>
+  <hr>
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.4",
     "@angular/cli": "~16.1.4",
