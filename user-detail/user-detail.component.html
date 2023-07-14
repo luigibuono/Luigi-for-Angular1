@@ -1,0 +1,103 @@
+<app-navbar> </app-navbar>
+<div class="container">
+
+  <div
+    class="user-datail"
+    *ngIf="selectedUser && !openPopUpDelete && !openPopUpEdit"
+  >
+    <h1>User {{ selectedUser.id }} detail</h1>
+    <p><strong>NAME:</strong> {{ selectedUser.name }}</p>
+    <p><strong>EMAIL:</strong> {{ selectedUser.email }}</p>
+    <p><strong>GENDER: </strong> {{ selectedUser.gender }}</p>
+    <p><strong>STATUS:</strong> {{ selectedUser.status }}</p>
+
+    <div class="buttonUserDetail">
+      <button class="btn btn-primary" (click)="openPopUpDelete = true">
+        DELETE
+      </button>
+      <button class="btn btn-primary" (click)="clickUserEdit()">EDIT</button>
+    </div>
+  </div>
+
+  <!-- BOX FOR DELETE USER-->
+  <div class="delete-pop-up" *ngIf="openPopUpDelete">
+    ARE YOU SURE TO DELETE THIS USERS?
+    <div class="button-delete-pop-up">
+      <button class="btn btn-danger" (click)="deleteUser()">YES</button>
+      <button class="btn btn-light" (click)="openPopUpDelete = false">
+        NO
+      </button>
+    </div>
+  </div>
+  <!-- BOX FOR EDIT USER-->
+
+  <div class="delete-pop-up" *ngIf="openPopUpEdit">
+    <form
+      action=""
+      class="form-edit"
+      #editUserForm="ngForm"
+      (ngSubmit)="editUser()"
+    >
+      <label for="name">Name</label>
+      <input
+        type="text"
+        #name="ngModel"
+        name="name"
+        type="text"
+        [(ngModel)]="userEdit.name"
+        required
+      />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        #email="ngModel"
+        [(ngModel)]="userEdit.email"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9-.]+\.[a-z]{2,}$"
+      />
+
+      <label for="gender">Gender</label>
+      <select name="gender" [(ngModel)]="userEdit.gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label for="status">Status</label>
+      <select name="status" [(ngModel)]="userEdit.status" required>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+
+      <div class="button-for-edit">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!editUserForm.touched && editUserForm.form.valid"
+        >
+          Confirm
+        </button>
+        <button class="btn btn-light" (click)="goBack()">Go Back</button>
+      </div>
+    </form>
+  </div>
+  <span
+    class="see-post-span"
+    (click)="seePost = !seePost"
+    *ngIf="!openPopUpDelete && !openPopUpEdit! && selectedUser"
+    >See his posts
+  </span>
+  <div *ngIf="!openPopUpDelete && seePost && !openPopUpEdit">
+    <div class="container-post-detail" *ngFor="let post of posts">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.body }}</p>
+      <span class="comment-button" routerLink="/post/{{ post.id }}"
+        >View Comments
+      </span>
+    </div>
+    <h2 *ngIf="posts.length == 0" style="margin: 20px">No post yet</h2>
+  </div>
+</div>
+
+

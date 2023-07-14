@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<body>
+<div class="container">
+  <h1>Add new User</h1>
+
+  <form class="speaker-form" #newUserForm="ngForm" (ngSubmit)="createNewUser()">
+    <label for="name">Name</label>
+    <input
+      #name="ngModel"
+      name="name"
+      type="text"
+      minlength="5"
+      required
+      [(ngModel)]="newUser.name"
+      class="inputForm"
+    />
+    <div class="alert alert-danger" *ngIf="name.invalid && name.touched">
+      Your name is invalid, min lenght is 5 characters
+    </div>
+
+    <label for="email">Email</label>
+
+    <input
+      #email="ngModel"
+      name="email"
+      type="email"
+      required
+      pattern="[a-z0-9._%+-]+@[a-z0-9-.]+\.[a-z]{2,}$"
+      [(ngModel)]="newUser.email"
+    />
+    <div class="alert alert-danger" *ngIf="email.invalid && email.touched">
+      Your e-mail is invalid
+    </div>
+
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" [(ngModel)]="newUser.gender" required>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="!newUserForm.form.valid"
+    >
+      Save
+    </button>
+  </form>
+  <p class="response">{{ respose }}</p>
+</div>
+</body>
+
