@@ -1,5 +1,9 @@
 # Luigi-for-Angular1
 
+Deploy su netlify : https://calm-cupcake-969ae7.netlify.app
+
+
+
 
 <h1> Tutti i passaggi effettuati per questo progetto : </h1>
 <br>
