@@ -1,6 +1,6 @@
 # Luigi-for-Angular1
 
-Deploy su netlify : https://calm-cupcake-969ae7.netlify.app
+Deploy su netlify : https://tubular-maamoul-6d36b2.netlify.app
 
 
 
