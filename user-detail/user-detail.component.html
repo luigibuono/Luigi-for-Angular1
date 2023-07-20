@@ -29,6 +29,9 @@
       </button>
     </div>
   </div>
+
+
+
   <!-- BOX FOR EDIT USER-->
 
   <div class="delete-pop-up" *ngIf="openPopUpEdit">
@@ -86,7 +89,7 @@
     class="see-post-span"
     (click)="seePost = !seePost"
     *ngIf="!openPopUpDelete && !openPopUpEdit! && selectedUser"
-    >See his posts
+    >Add a new post by this user and for already existing view posts
   </span>
   <div *ngIf="!openPopUpDelete && seePost && !openPopUpEdit">
     <div class="container-post-detail" *ngFor="let post of posts">
@@ -96,8 +99,70 @@
         >View Comments
       </span>
     </div>
-    <h2 *ngIf="posts.length == 0" style="margin: 20px">No post yet</h2>
+
+
+
+    <h2 *ngIf="posts.length == 0" style="margin: 20px">
+
+      <div class="container">
+        <h1>New post</h1>
+        <form class="speaker-form" #newPostForm="ngForm" (ngSubmit)="createNewPost()">
+          <label for="title">POST TITLE</label>
+          <input
+            #title="ngModel"
+            name="title"
+            type="text"
+            minlength="8"
+            required
+            [(ngModel)]="newPost.title"
+          />
+          <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
+            Title is invalid, min lenght is 8 characters.
+          </div>
+          <label for="body">CONTENT</label>
+          <textarea
+            name="body"
+            #body="ngModel"
+            cols="30"
+            rows="10"
+            [(ngModel)]="newPost.body"
+            required
+            minlength="20"
+          ></textarea>
+          <div class="alert alert-danger" *ngIf="body.invalid && body.touched">
+            Body is invalid, min lenght is 20 characters.
+          </div>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!newPostForm.form.valid"
+          >
+            SAVE
+          </button>
+          <div class="response-box">
+            <p class="response">{{ response }}</p>
+          </div>
+        </form>
+      </div>
+
+
+
+    </h2>
+
+
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
