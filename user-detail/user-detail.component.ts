@@ -17,6 +17,13 @@ export class UserDetailComponent implements OnInit {
   posts: any = [];
   seePost: boolean = false;
 
+  newPost: any = {
+    title: '',
+    body: '',
+    userId: undefined,
+  };
+  response: string;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -69,4 +76,19 @@ export class UserDetailComponent implements OnInit {
       this.router.navigate(['/users']);
     }, 1000);
   }
+
+  createNewPost() {
+
+  let user = JSON.parse(`${localStorage.getItem('currentUser')}`);
+  this.newPost.userId = user.id;
+  this.http.createNewPost(this.newPost, user.id).subscribe((data) => {
+    if (data.status == 201) {
+      this.response = 'New post has been created';
+      setTimeout(() => {
+        this.router.navigate(['/posts']);
+      }, 1500);
+    }
+  });
+  }
 }
+
