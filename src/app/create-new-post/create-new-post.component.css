@@ -1,0 +1,51 @@
+.container {
+  height: 100%;
+
+  min-height: 77vh;
+  background-color: white;
+
+}
+form {
+  display: flex;
+  flex-direction: column;
+
+}
+label {
+  margin: 15px;
+}
+button {
+  margin: 20px;
+  font-size: 20px;
+  width: 100px;
+  text-align: center;
+}
+textarea,
+input {
+  padding: 5px;
+  width: 500px;
+}
+
+.alert-danger {
+  font-size: 13px;
+  padding: 7px;
+}
+.response-box {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.response {
+  color: green;
+  font-style: italic;
+
+  margin: 15px;
+}
+
+
+
+body{
+  margin: 100px;
+
+}

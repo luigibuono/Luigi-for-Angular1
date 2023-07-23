@@ -1,0 +1,67 @@
+<app-navbar> </app-navbar>
+<body>
+<div class="container-user">
+  <div class="search-add" *ngIf="!isFetching">
+    <input
+      #searchBox
+      type="text"
+      id="searchBox"
+      placeholder="Search User"
+      class="form-control"
+      (input)="getUser('1', pageSize, searchBox.value)"
+    />
+    <button mat-raised-button color="warn" class="btn btn-primary" routerLink="/new-user" >ADD NEW USER</button>
+  </div>
+
+
+
+  <div
+    class="box-user"
+    *ngFor="let user of users"
+    routerLink="/user/{{ user.id }}"
+  >
+    <div class="info">
+
+      <div class="box-responsive">
+        <div class="box-text">
+          {{ user.name }}
+        </div>
+        <div class="box-text" style="font-style: italic">
+          {{ user.email }}
+        </div>
+        <div class="box-text" style="font-style: italic">
+          {{ user.gender }}
+        </div>
+        <div class="box-text" style="font-style: italic">
+          {{ user.gender }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h1 *ngIf="users.length == 0 && !isFetching" class="no-user-text">
+    No users found
+  </h1>
+
+  <div class="paginator">
+    <mat-paginator
+      [length]="pageTotal"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[2, 5, 10, 25, 100]"
+      aria-label="Select page"
+      style="background-color: transparent"
+    >
+    </mat-paginator>
+  </div>
+</div>
+
+
+<style>
+  body{
+    background-image: url('../assets/sfondi chiari.webp');
+    height: auto;
+   }
+  </style>
+
+
+</body>

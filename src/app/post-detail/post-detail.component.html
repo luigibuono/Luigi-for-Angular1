@@ -1,0 +1,54 @@
+<app-navbar> </app-navbar>
+<div class="container">
+
+  <div class="container-post-detail">
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.body }}</p>
+    <span style="margin-top: 20px" *ngIf="!isFetching">COMMENT:</span>
+    <div class="container-comment" *ngFor="let comment of comments">
+      <h2>{{ comment.name }}</h2>
+      <p>{{ comment.body }}</p>
+    </div>
+
+    <p *ngIf="comments.length === 0 && !isFetching" class="no-comment-text">
+      No comments yet
+    </p>
+    <span
+      (click)="addCommentBox = !addCommentBox"
+      class="add-comment-text"
+      *ngIf="!isFetching"
+      >ENTER HERE YOUR COMMENT</span
+    >
+    <form
+      class="add-comment-form"
+      *ngIf="addCommentBox"
+      (ngSubmit)="addNewComment()"
+      #newCommentForm="ngForm"
+    >
+      <textarea
+        name="comment"
+        #comment="ngModel"
+        cols="30"
+        rows="10"
+        [(ngModel)]="newComment.body"
+        minlength="10"
+        required
+      ></textarea>
+      <div
+        class="alert alert-danger"
+        *ngIf="comment.invalid && comment.touched"
+      >
+        Min lenght is 10 characters.
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!newCommentForm.form.valid"
+      >
+        ADD COMMENT
+      </button>
+    </form>
+  </div>
+</div>
+
+
