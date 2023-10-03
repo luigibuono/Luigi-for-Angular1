@@ -1,10 +1,14 @@
+
+<nav class="navbar navbar-expand navbar-light bg-dark">
+  <img id="laptop" src="../../assets/ntt_orig.webp" height="40px" width="120px">
+<h1 class="title"> ORIENTAMENTO AL CLIENTE &nbsp;-INTEGRITA E TRASPARENZA &nbsp;-INNOVAZIONE &nbsp;-ONESTA E LEGALITA &nbsp;-MERITOCRAZIA &nbsp;-LUNGIMIRANZA &nbsp;-PROFESSIONALITA &nbsp;-SVILUPPO &nbsp;-FORMAZIONE</h1>
+</nav>
+<iframe src="https://giphy.com/embed/RLzx56FHFjdEWtz1yK" width="100%" height="251" frameborder="0" class="giphy-embed" allowfullscreen style="pointer-events: none;" ></iframe>
 <body>
 <div class="container">
   <div class="box">
-    <h1>PROGETTO NTT-DATA</h1>
-
-
     <form #newUserForm="ngForm" (ngSubmit)="login()" id="loginForm">
+      <h3>SIGN IN</h3>
       <label for="name">NAME</label>
       <input
         #name="ngModel"
@@ -13,11 +17,11 @@
         [(ngModel)]="newCurrentUser.name"
         class="form-control"
         placeholder="Your Name"
-        minlength="5"
+        minlength="2"
         required
       />
       <span class="alert alert-danger" *ngIf="name.invalid && name.touched">
-        Your name is invalid, min lenght is 5 characters
+        Your name is invalid
       </span>
       <label for="email">EMAIL</label>
       <input
@@ -83,10 +87,34 @@
 </div>
 <style>
 body{
-  background-image: url('../assets/sfondo1.png');
+  background-image: url('../assets/ntt.jpg');
   height: 100%;
  }
 </style>
+
+
+</body>
+<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+
+  <h6 class="text-uppercase fw-bold mb-4">
+     Created by Luigi Buono
+   </h6>
+
+<a href="https://www.facebook.com/luigi.buono.9250/" target="_blank" class="me-4 text-reset">
+  <i class="fab fa-facebook-f"></i>
+</a>
+<a href="https://twitter.com/LuigiBu48833456" target="_blank" class="me-4 text-reset">
+  <i class="fab fa-twitter"></i>
+</a>
+<a href="https://www.linkedin.com/in/luigi-buono-/" target="_blank" class="me-4 text-reset">
+  <i class="fab fa-linkedin"></i>
+</a>
+<a href="https://github.com/luigibuono" target="_blank" class="me-4 text-reset">
+  <i class="fab fa-github"></i>
+</a>
+</div>
+
+
 
 
 </body>
